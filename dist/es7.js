@@ -280,8 +280,6 @@ var VueSimpleSuggest = {
     key(item, elem) {
       this.hovered = item;
 
-      console.log('KEY');
-
       if (this.hovered != null) {
         this.$emit('keypress', item, elem);
       }

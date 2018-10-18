@@ -55,16 +55,14 @@ function _finally(body, finalizer) {
     var result = body();
   } catch (e) {
     return recover(e);
-  }
-  if (result && result.then) {
+  }if (result && result.then) {
     return result.then(void 0, recover);
   }return result;
 }function _invokeIgnored(body) {
   var result = body();if (result && result.then) {
     return result.then(_empty);
   }
-}
-function _await(value, then, direct) {
+}function _await(value, then, direct) {
   if (direct) {
     return then ? then(value) : value;
   }value = Promise.resolve(value);return then ? value.then(then) : value;
@@ -381,8 +379,6 @@ var VueSimpleSuggest = {
     },
     key: function key(item, elem) {
       this.hovered = item;
-
-      console.log('KEY');
 
       if (this.hovered != null) {
         this.$emit('keypress', item, elem);
