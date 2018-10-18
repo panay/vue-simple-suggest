@@ -55,9 +55,11 @@ function _finally(body, finalizer) {
     var result = body();
   } catch (e) {
     return recover(e);
-  }if (result && result.then) {
+  }
+  if (result && result.then) {
     return result.then(void 0, recover);
-  }return result;
+  }
+  return result;
 }function _invokeIgnored(body) {
   var result = body();if (result && result.then) {
     return result.then(_empty);
@@ -432,7 +434,7 @@ var VueSimpleSuggest = {
             item = this.suggestions[listEdge];
           }
 
-        this.key(item);
+        this.key(item, e.target);
       }
     },
     onListKeyUp: function onListKeyUp(e) {
