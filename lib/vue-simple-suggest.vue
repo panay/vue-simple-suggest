@@ -333,7 +333,7 @@ export default {
           item = this.suggestions[listEdge]
         }
 
-        this.key(item)
+        this.key(item, e.target)
       }
     },
     onListKeyUp (e) {
