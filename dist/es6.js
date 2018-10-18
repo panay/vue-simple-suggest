@@ -41,8 +41,7 @@ function _finally(body, finalizer) {
     return recover(e);
   }if (result && result.then) {
     return result.then(void 0, recover);
-  }
-  return result;
+  }return result;
 }function _invokeIgnored(body) {
   var result = body();if (result && result.then) {
     return result.then(_empty);
@@ -75,9 +74,7 @@ function _finally(body, finalizer) {
     };
   };
 }();function _invoke(body, then) {
-  var result = body();
-
-  if (result && result.then) {
+  var result = body();if (result && result.then) {
     return result.then(then);
   }return then(result);
 }
@@ -336,11 +333,11 @@ var VueSimpleSuggest = {
         this.$emit('hover', item, elem);
       }
     },
-    key(item, direction) {
+    key(item, index) {
       this.hovered = item;
 
       if (this.hovered != null) {
-        this.$emit('keypress', item, direction);
+        this.$emit('keypress', item, index);
       }
     },
     hoverList(isOverList) {
@@ -394,7 +391,7 @@ var VueSimpleSuggest = {
 
         const upOrDownDirection = e.keyCode === 38 ? 'up' : e.keyCode === 40 ? 'down' : null;
 
-        this.key(item, upOrDownDirection);
+        this.key(item, this.hoveredIndex);
       }
     },
     onListKeyUp(e) {
