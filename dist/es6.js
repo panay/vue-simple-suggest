@@ -39,7 +39,8 @@ function _finally(body, finalizer) {
     var result = body();
   } catch (e) {
     return recover(e);
-  }if (result && result.then) {
+  }
+  if (result && result.then) {
     return result.then(void 0, recover);
   }return result;
 }function _invokeIgnored(body) {
@@ -78,7 +79,8 @@ function _await(value, then, direct) {
   var result = body();if (result && result.then) {
     return result.then(then);
   }return then(result);
-}function _awaitIgnored(value, direct) {
+}
+function _awaitIgnored(value, direct) {
   if (!direct) {
     return Promise.resolve(value).then(_empty);
   }
@@ -117,7 +119,8 @@ var VueSimpleSuggest = {
     get event() {
       return event;
     }
-  }, props: {
+  },
+  props: {
     styles: {
       type: Object,
       default: () => ({})
@@ -133,10 +136,10 @@ var VueSimpleSuggest = {
     maxSuggestions: {
       type: Number,
       default: 10
-    },
-    displayAttribute: {
+    }, displayAttribute: {
       type: String,
-      default: 'title' },
+      default: 'title'
+    },
     valueAttribute: {
       type: String,
       default: 'id'
@@ -332,6 +335,15 @@ var VueSimpleSuggest = {
         this.$emit('hover', item, elem);
       }
     },
+    key(item, elem) {
+      this.hovered = item;
+
+      console.log('KEY');
+
+      if (this.hovered != null) {
+        this.$emit('keypress', item, elem);
+      }
+    },
     hoverList(isOverList) {
       this.isOverList = isOverList;
     },
@@ -381,7 +393,7 @@ var VueSimpleSuggest = {
             item = this.suggestions[listEdge];
           }
 
-        this.hover(item);
+        this.key(item);
       }
     },
     onListKeyUp(e) {

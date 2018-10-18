@@ -277,6 +277,15 @@ var VueSimpleSuggest = {
         this.$emit('hover', item, elem);
       }
     },
+    key(item, elem) {
+      this.hovered = item;
+
+      console.log('KEY');
+
+      if (this.hovered != null) {
+        this.$emit('keypress', item, elem);
+      }
+    },
     hoverList(isOverList) {
       this.isOverList = isOverList;
     },
@@ -321,7 +330,7 @@ var VueSimpleSuggest = {
             item = this.suggestions[listEdge];
           }
 
-        this.hover(item);
+        this.key(item);
       }
     },
     onListKeyUp(e) {
