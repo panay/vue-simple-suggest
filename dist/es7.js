@@ -277,11 +277,11 @@ var VueSimpleSuggest = {
         this.$emit('hover', item, elem);
       }
     },
-    key(item, elem) {
+    key(item, direction) {
       this.hovered = item;
 
       if (this.hovered != null) {
-        this.$emit('keypress', item, elem);
+        this.$emit('keypress', item, direction);
       }
     },
     hoverList(isOverList) {
@@ -328,7 +328,9 @@ var VueSimpleSuggest = {
             item = this.suggestions[listEdge];
           }
 
-        this.key(item, e.target);
+        const upOrDownDirection = e.keyCode === 38 ? 'up' : e.keyCode === 40 ? 'down' : null;
+
+        this.key(item, upOrDownDirection);
       }
     },
     onListKeyUp(e) {
